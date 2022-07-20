@@ -39,5 +39,7 @@ for (let i = 1; i <= 5; i ++){
         case 5: 
             console.log("edu")
             break
+        default: //funciona como el else
+            break
     }
 }
