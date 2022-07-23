@@ -3,57 +3,71 @@ stock = [0,0,0,0,0]
 
 
 while (a) {
-    const producto = new Deposito({
+    var producto = new Deposito({
         condicion: prompt("Desea agregar o restar stock?"),
-        nombre: prompt("Ingrese el producto al cual le editara el stock inicial \n- Gondola \n- Rack \n- Estanteria \n- Mensula \n- Riel \n - 'x' para terminar").toLowerCase(), 
-        cantidadTotal: 0
+        nombre: prompt("Ingrese el producto al cual le editara el stock inicial \n- Gondola \n- Rack \n- Estanteria \n- Riel \n- Mensula  \n - 'x' para terminar").toLowerCase(), 
     })
 
     switch(producto.nombre){
         case "gondola": 
         case "rack": 
         case "estanteria": 
-        case "rieles": 
-        case "mensulas": 
-            producto.cantidad = producto.setCantidad()
-            console.log("El stock por el momento es de: " + producto.cantidad)
-            switch(producto.nombre){
-                case "gondola": 
-                    stock[0] = producto.cantidadTotal
-                    console.log("El stock total es de: " + stock[0])
-                case "rack": 
-                    stock[1] = producto.cantidadTotal
-                case "estanteria": 
-                    stock[2] = producto.cantidadTotal
-                case "rieles": 
-                    stock[3] = producto.cantidadTotal
-                case "mensulas":     
-                    stock[4] = producto.cantidadTotal
-            }
+        case "riel": 
+        case "mensula": 
+            producto.cantidad = producto.setCantidad() 
             break
         default: 
-            a=false
+            a = false
             break
     }
 }
 
-alert("El stock de gondolas es de " + stock[0])
+for (let i = 0; i <= stock.length - 1 ; i++) {
+    alert("El stock de " + producto.nombre + " es de " + stock[i])
+}
 
 function Deposito (producto) {
     this.nombre = producto.nombre
+    this.condicion = producto.condicion
     this.setCantidad = () => { 
-        if (producto.condicion == "agregar") {
-            this.cantidad = parseInt(prompt("Inserte la cantidad de stock de " + this.nombre + " a agregar"))
-            this.cantidadTotal = this.cantidad + producto.cantidadTotal
-            return this.cantidadTotal
+        this.cantidad = parseInt(prompt("Inserte la cantidad de stock de " + this.nombre + " a agregar"))
+        if (this.condicion == "agregar") {
+            switch(this.nombre){
+                case "gondola": 
+                    stock[0] = stock[0] + this.cantidad 
+                    break
+                case "rack": 
+                    stock[1] = stock[1] + this.cantidad 
+                    break
+                case "estanteria": 
+                    stock[2] = stock[2] + this.cantidad 
+                    break
+                case "riel": 
+                    stock[3] = stock[3] + this.cantidad 
+                    break
+                case "mensula":     
+                    stock[4] = stock[4] + this.cantidad 
+                    break
+            }
+        } else if (this.condicion == "restar") {
+        switch(this.nombre){
+            case "gondola": 
+                    stock[0] = stock[0] - this.cantidad 
+                    break
+                case "rack": 
+                    stock[1] = stock[1] - this.cantidad 
+                    break
+                case "estanteria": 
+                    stock[2] = stock[2] - this.cantidad 
+                    break
+                case "riel": 
+                    stock[3] = stock[3] - this.cantidad 
+                    break
+                case "mensula":     
+                    stock[4] = stock[4] - this.cantidad    
+                    break
+            }
         }
-        else if (producto.condicion == "restar"){
-            this.cantidad = parseInt(prompt("Inserte la cantidad de stock de " + this.nombre + " a restar"))
-            this.cantidadTotal = producto.cantidadTotal - this.cantidad
-            return this.cantidadTotal
-        }
+        console.log(stock)
     }
-    
 }
-
-
