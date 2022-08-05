@@ -1,66 +1,54 @@
-stock = [0,0,0,0,0]
-
-function insertText () {
-    for (let i = 0; i <= stock.length - 1 ; i++) {
-        switch(i){
-            case 0:
-                nombre = "Gondolas"
-                break
-            case 1:
-                nombre = "Racks"
-                break
-            case 2:
-                nombre = "Estanterias"
-                break
-            case 3:
-                nombre = "Rieles"
-                break
-            case 4:
-                nombre = "Mensulas"
-                break
-        }
-        document.getElementById('name'+i).innerHTML = nombre;
-        document.getElementById('cant'+i).innerHTML = stock[i];
-    }
+function Producto(id, titulo, cantidad, rubro) {
+    this.id = id;
+    this.titulo = titulo;
+    this.cantidad = cantidad;
+    this.rubro = rubro;
 }
 
-function setStock () {
-    if (document.getElementById('Input1').value != "") {
-        switch(document.getElementById('select').value){
-            case "0":
-                stock[0] = parseInt(document.getElementById('Input1').value) + stock[0]
-                break
-            case "1":
-                stock[1] = parseInt(document.getElementById('Input1').value) + stock[1]
-                break
-            case "2":
-                stock[2] = parseInt(document.getElementById('Input1').value) + stock[2]
-                break
-            case "3":
-                stock[3] = parseInt(document.getElementById('Input1').value) + stock[3]
-                break
-            case "4":
-                stock[4] = parseInt(document.getElementById('Input1').value) + stock[4]
-                break
-        }
-    } if (document.getElementById('Input2').value != "") {
-        switch(document.getElementById('select').value){
-            case "0":
-                stock[0] = stock[0] - parseInt(document.getElementById('Input2').value)
-                break
-            case "1":
-                stock[1] = stock[1] - parseInt(document.getElementById('Input2').value) 
-                break
-            case "2":
-                stock[2] = stock[2] - parseInt(document.getElementById('Input2').value) 
-                break
-            case "3":
-                stock[3] = stock[3] - parseInt(document.getElementById('Input2').value) 
-                break
-            case "4":
-                stock[4] = stock[4] - parseInt(document.getElementById('Input2').value) 
-                break
-        }
-    }
-    insertText ()
-}
+const productos = [];
+
+setCreate = () => {
+    productos.push(
+        new Producto(
+            parseInt(document.getElementById("codigo").value),
+            document.getElementById("titulo").value,
+            parseInt(document.getElementById("cantidad").value),
+            document.getElementById("rubro").value
+        )
+    );
+    let posicion = String(productos.length)
+    var select = document.getElementById("dynamic-select");
+    select.options[select.options.length] = new Option(
+        "# ID: " +
+        document.getElementById("codigo").value +
+        " | Titulo: " +
+        document.getElementById("titulo").value,
+        parseInt(document.getElementById("codigo").value)
+    );
+    var table = document.getElementById("table");
+    var row = table.insertRow(0);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    cell1.innerHTML = document.getElementById("codigo").value
+    cell2.innerHTML = document.getElementById("titulo").value
+    cell3.innerHTML = document.getElementById("rubro").value
+    cell4.innerHTML = parseInt(document.getElementById("cantidad").value)
+    cell5.innerHTML =
+        "<button type='button' onclick='agregar(event)' class='btn btn-outline-success' data-bs-toggle='modal' data-bs-target='#addModal' ><span id='"+posicion+"' class='bi-plus'></span></button> <button type='button' class='btn btn-outline-primary'><span class='bi-pencil'></span></button> <button type='button' onclick='eliminar(event)' class='btn btn-outline-danger'><span class='bi-trash'></span></button>";
+    document.getElementById("codigo").value = ""
+    document.getElementById("titulo").value = ""
+    document.getElementById("rubro").value = ""
+    document.getElementById("cantidad").value = ""
+    };
+
+agregar = (event) => {
+    console.log(event.target.id);
+
+};
+
+eliminar = (event) => {
+    event.target.parentNode.parentNode.remove()
+};
