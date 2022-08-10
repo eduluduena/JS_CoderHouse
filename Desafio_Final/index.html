@@ -17,110 +17,98 @@
         <br />
         <h3>Gestor de stock</h3>
         <br />
-        <h5>Seleccione el producto a modificar</h5>
-        <select id="dynamic-select" class="form-select" aria-label="Default select example" />
-        <select>
-            <br />
-            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                Agregar Producto
-            </button>
-            <div class="modal" id="myModal">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Agregar Producto</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="Titulo" class="form-label">Titulo</label>
-                                    <input type="text" class="form-control" required id="titulo"
-                                        aria-describedby="Titulo" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="codigo" class="form-label">Codigo</label>
-                                    <input type="number" class="form-control" required id="codigo"
-                                        aria-describedby="Codigo" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="cantidad" class="form-label">Cantidad</label>
-                                    <input type="number" class="form-control" required id="cantidad"
-                                        aria-describedby="Cantidad" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="rubro" class="form-label">Rubro</label>
-                                    <select required class="form-select" id="rubro">
-                                        <option id="name0" value="0">Gondolas</option>
-                                        <option id="name1" value="1">Racks</option>
-                                        <option id="name2" value="2">Estanterias</option>
-                                        <option id="name3" value="3">Rieles</option>
-                                        <option id="name4" value="4">Mensulas</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
-                                Cerrar
-                            </button>
-                            <button type="submit" onclick="setCreate()" data-bs-dismiss="modal"
-                                class="btn btn-outline-primary">
-                                Guardar
-                            </button>
-                        </div>
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+            Agregar Producto
+        </button>
+        <br>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Agregar Producto</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="Titulo" class="form-label">Titulo</label>
+                                <input type="text" class="form-control" required id="titulo"
+                                    aria-describedby="Titulo" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="codigo" class="form-label">Codigo</label>
+                                <input type="number" class="form-control" required id="codigo"
+                                    aria-describedby="Codigo" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="cantidad" class="form-label">Cantidad</label>
+                                <input type="number" class="form-control" required id="cantidad"
+                                    aria-describedby="Cantidad" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="rubro" class="form-label">Rubro</label>
+                                <select required class="form-select" id="rubro">
+                                    <option id="name0" value="0">Gondolas</option>
+                                    <option id="name1" value="1">Racks</option>
+                                    <option id="name2" value="2">Estanterias</option>
+                                    <option id="name3" value="3">Rieles</option>
+                                    <option id="name4" value="4">Mensulas</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+                        <button type="submit" onclick="setCreate()" data-bs-dismiss="modal"
+                            class="btn btn-outline-primary">
+                            Guardar
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="modal" id="addModal">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Agregar Stock</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <label for="addCantidad" class="form-label">Cantidad</label>
-                                    <input type="number" class="form-control" required id="addCantidad"
-                                        aria-describedby="AddCantidad" />
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
-                                Cerrar
-                            </button>
-                            <button type="submit" data-bs-dismiss="modal"
-                                class="btn btn-outline-success">
-                                Guardar
-                            </button>
-                        </div>
+        </div>
+        <div class="modal" id="addModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Agregar Stock</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="addCantidad" class="form-label">Cantidad</label>
+                                <input type="number" class="form-control" required id="addCantidad"
+                                    aria-describedby="AddCantidad" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+                        <button type="submit" data-bs-dismiss="modal" id="btn-save" class="btn btn-outline-success">
+                            Guardar
+                        </button>
                     </div>
                 </div>
             </div>
-            <br />
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col"># ID</th>
-                        <th scope="col">Titulo</th>
-                        <th scope="col">Rubro</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="table">
-                    <tr>
-                        <th scope="row" id="codigo"></th>
-                        <td id="titulo"></td>
-                        <td id="rubro"></td>
-                        <td id="cantidad"></td>
-                        <td id="acciones"></td>
-                    </tr>
-                </tbody>
-            </table>
+        </div>
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"># ID</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Rubro</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="table"></tbody>
+        </table>
     </div>
 </body>
 
