@@ -8,17 +8,17 @@ function Producto(id, titulo, cantidad, rubro) {
 const productos = [];
 
 setCreate = () => {
-  productos.push(
-    new Producto(
-      parseInt(document.getElementById("codigo").value),
-      document.getElementById("titulo").value,
-      parseInt(document.getElementById("cantidad").value),
-      document.getElementById("rubro").value
-    )
-  );
-  let tabla = document.querySelector("#table");
-  tabla.innerHTML = "";
-  crateTable();
+    productos.push(
+      new Producto(
+        parseInt(document.getElementById("codigo").value),
+        document.getElementById("titulo").value,
+        parseInt(document.getElementById("cantidad").value),
+        document.getElementById("rubro").value
+      )
+    );
+    let tabla = document.querySelector("#table");
+    tabla.innerHTML = "";
+    crateTable();
 };
 
 agregar = (id, productos) => {
@@ -34,10 +34,8 @@ agregar = (id, productos) => {
 };
 
 eliminar = (id, productos) => {
-  const indexOfObject = productos.findIndex((obj) => {
-    if (obj.id === parseInt(id)) {
-    }
-  });
+
+  const indexOfObject = productos.findIndex( producto => producto.id === parseInt(id));
   productos.splice(indexOfObject, 1);
   crateTable();
 };
