@@ -48,11 +48,11 @@
                             <div class="mb-3">
                                 <label for="rubro" class="form-label">Rubro</label>
                                 <select required class="form-select" id="rubro">
-                                    <option id="name0" value="0">Gondolas</option>
-                                    <option id="name1" value="1">Racks</option>
-                                    <option id="name2" value="2">Estanterias</option>
-                                    <option id="name3" value="3">Rieles</option>
-                                    <option id="name4" value="4">Mensulas</option>
+                                    <option id="name0" value="Gondolas">Gondolas</option>
+                                    <option id="name1" value="Racks">Racks</option>
+                                    <option id="name2" value="Estanterias">Estanterias</option>
+                                    <option id="name3" value="Rieles">Rieles</option>
+                                    <option id="name4" value="Mensulas">Mensulas</option>
                                 </select>
                             </div>
                         </form>
@@ -89,13 +89,60 @@
                         <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
                             Cerrar
                         </button>
-                        <button type="submit" data-bs-dismiss="modal" id="btn-save" class="btn btn-outline-success">
+                        <button type="submit" data-bs-dismiss="modal" id="btn-add-save" class="btn btn-outline-success">
                             Guardar
                         </button>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="modal" id="editModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Editar Producto</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="addCantidad" class="form-label"># ID</label>
+                                <input type="number" id="editID" class="form-control" required 
+                                    aria-describedby="AddCantidad" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="addCantidad" class="form-label">Titulo</label>
+                                <input type="text" id="editTitle" class="form-control" required 
+                                    aria-describedby="AddCantidad" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="rubro" class="form-label">Rubro</label>
+                                <select required class="form-select"id="editRubro">
+                                    <option id="name0" value="Gondolas">Gondolas</option>
+                                    <option id="name1" value="Racks">Racks</option>
+                                    <option id="name2" value="Estanterias">Estanterias</option>
+                                    <option id="name3" value="Rieles">Rieles</option>
+                                    <option id="name4" value="Mensulas">Mensulas</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="addCantidad" class="form-label">Cantidad</label>
+                                <input type="number" id="editCantidad" class="form-control" required 
+                                    aria-describedby="AddCantidad" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+                        <button type="submit" data-bs-dismiss="modal" id="btn-edit-save" class="btn btn-outline-success">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>        
         <br />
         <table class="table">
             <thead>
