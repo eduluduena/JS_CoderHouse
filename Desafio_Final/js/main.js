@@ -16,17 +16,18 @@ function Producto(id, titulo, cantidad, rubro) {
 }
 
 setCreate = () => {
-    productos.push( 
-      new Producto(
-        parseInt(document.getElementById("codigo").value),
-        document.getElementById("titulo").value,
-        parseInt(document.getElementById("cantidad").value),
-        document.getElementById("rubro").value
-      )
-    );
-    let tabla = document.querySelector("#table");
-    tabla.innerHTML = ""
-    createTable()
+  productos.push(
+    new Producto(
+      parseInt(document.getElementById("codigo").value),
+      document.getElementById("titulo").value,
+      parseInt(document.getElementById("cantidad").value),
+      document.getElementById("rubro").value
+    )
+  );
+  let tabla = document.querySelector("#table");
+  tabla.innerHTML = ""
+  createTable()
+  toastify(true, "Se creo el producto correctamente")
 };
 
 agregar = (id, productos) => {
@@ -38,11 +39,12 @@ agregar = (id, productos) => {
     });
     parseInt((document.getElementById("addCantidad").value = 0));
     createTable();
+    toastify(true, "Se agrego el stock del producto correctamente")
   };
 };
 
 editar = (id, productos) => {
-  const indexOfObject = productos.findIndex( producto => producto.id === parseInt(id));
+  const indexOfObject = productos.findIndex(producto => producto.id === parseInt(id));
   document.getElementById("editID").value = productos[indexOfObject].id
   document.getElementById("editTitle").value = productos[indexOfObject].titulo
   document.getElementById("editRubro").value = productos[indexOfObject].rubro
@@ -59,13 +61,15 @@ editar = (id, productos) => {
     });
     parseInt((document.getElementById("addCantidad").value = 0));
     createTable();
+    toastify(true, "Se edito el producto correctamente")
   }
 };
 
 eliminar = (id, productos) => {
-  const indexOfObject = productos.findIndex( producto => producto.id === parseInt(id));
+  const indexOfObject = productos.findIndex(producto => producto.id === parseInt(id));
   productos.splice(indexOfObject, 1);
   createTable();
+  toastify(false, "Se elimino el producto correctamente")
 };
 
 createTable = () => {
@@ -94,3 +98,14 @@ createTable = () => {
         `;
   }
 };
+
+toastify = (condition, text) => {
+  gradiente = condition == true ? "#00b09b, #96c93d" : "#790909, #d60000"
+  Toastify({
+    text: text,
+    className: "info",
+    style: {
+      background: "linear-gradient(to right," + gradiente + ")",
+    }
+  }).showToast();
+}
