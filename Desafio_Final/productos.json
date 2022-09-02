@@ -1,0 +1,83 @@
+[
+    {
+        "id": 213,
+        "date": "1/9/2022",
+        "author": "sad",
+        "cantidad": 123,
+        "titulo": "asd",
+        "rubro": "Pintura",
+        "modificacion": "Agrego un producto"
+    },
+    {
+        "id": 213,
+        "date": "1/9/2022",
+        "author": "sad",
+        "cantidad": 336,
+        "titulo": "asd",
+        "rubro": "Pintura",
+        "modificacion": "Agrego stock"
+    },
+    {
+        "id": 213,
+        "date": "1/9/2022",
+        "author": "sad",
+        "cantidad": "336",
+        "titulo": "fdfddfe",
+        "rubro": "Pintura",
+        "modificacion": "Edición"
+    },
+    {
+        "id": 213,
+        "date": "1/9/2022",
+        "author": "sad",
+        "cantidad": "336",
+        "titulo": "fdfddfe",
+        "rubro": "Pintura",
+        "modificacion": "Eliminado"
+    },
+    {
+        "id": 123,
+        "date": "1/9/2022",
+        "author": "asd",
+        "cantidad": 21,
+        "titulo": "213",
+        "rubro": "Pintura",
+        "modificacion": "Agrego un producto"
+    },
+    {
+        "id": 123,
+        "date": "1/9/2022",
+        "author": "asd",
+        "cantidad": 3253,
+        "titulo": "213",
+        "rubro": "Pintura",
+        "modificacion": "Agrego stock"
+    },
+    {
+        "id": 123,
+        "date": "1/9/2022",
+        "author": "asd",
+        "cantidad": 3255,
+        "titulo": "213",
+        "rubro": "Pintura",
+        "modificacion": "Agrego stock"
+    },
+    {
+        "id": 123,
+        "date": "1/9/2022",
+        "author": "3",
+        "cantidad": "3255",
+        "titulo": "213",
+        "rubro": "Pintura",
+        "modificacion": "Edición"
+    },
+    {
+        "id": 1,
+        "date": "1/9/2022",
+        "author": "Eduardo",
+        "cantidad": 30,
+        "titulo": "Bandeja 43x90 #22",
+        "rubro": "Pintura",
+        "modificacion": "Agrego un producto"
+    }
+]
