@@ -1,4 +1,5 @@
 const productos = [];
+const db = []
 const sectores = [];
 let timeline = JSON.parse(localStorage.getItem("timeline"))
 
@@ -6,53 +7,63 @@ if (timeline == null) {
   timeline = []
 }
 
-// Get en proceso, por el momento estoy obteniendo que no tengo autorizacion para acceder a la api
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-// var myHeaders = new Headers();
-// myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+var urlencoded = new URLSearchParams();
+urlencoded.append("grant_type", "client_credentials");
+urlencoded.append("client_id", "arbrasfabrica@gmail.com");
+urlencoded.append("client_secret", "0fe26dae5d434a7182a7c8ea21c9cc60");
 
-// var urlencoded = new URLSearchParams();
-// urlencoded.append("grant_type", "client_credentials");
-// urlencoded.append("client_id", "arbrasfabrica@gmail.com");
-// urlencoded.append("client_secret", "0fe26dae5d434a7182a7c8ea21c9cc60");
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: urlencoded,
+  redirect: 'follow'
+};
 
-// var requestOptions = {
-//   method: 'POST',
-//   headers: myHeaders,
-//   body: urlencoded,
-//   redirect: 'follow'
-// };
+fetch("https://rest.contabilium.com/token", requestOptions)
+  .then(response => response.text())
+  .then(result => {
+    llamada(JSON.parse(result))
+  })
+  .catch(error => console.log('error', error));
+  
+function llamada(token) {
+  fetch("https://rest.contabilium.com/api/conceptos/search?pageSize=0",{
+    headers: {
+      Authorization: "Bearer " + token.access_token
+    }
+  })
+    .then(response => response.text())
+    .then(result => {
+      resultado = JSON.parse(result);
+      for (const i of resultado.Items) {
+        productos.push({
+            id: i.Codigo,
+            rubro: i.IdRubro,
+            titulo: i.Nombre,
+            precio: i.Precio,
+            cantidad: i.Stock,
+        });
+      }
+      console.log(productos)
+    createTable()
 
-// fetch("https://rest.contabilium.com/token", requestOptions)
-//   .then(response => response.json())
-//   .then(result => {
-//     fetch("https://rest.contabilium.com/api/common/paises", {
-//       method: 'GET',
-//       redirect: 'follow',
-//       header: ['Content-length: 0', 'Content-type: application/json', 'Authorization: Bearer' . result.access_token, 'Ocp-Apim-Subscription-Key' . result.subscription_key]
-//     })
-//       .then(response => response.text())
-//       .then(result => console.log(result))
-//       .catch(error => console.log('error', error));
-//   })
-//   .catch(error => console.log('error', error));
-
-
-// Este fetch y el archivo productos.json solamente fueron agregado para el desafio (BORRAR)
-fetch("./productos.json")
-  .then(response => response.json())
-  .then(result => console.log(result))
+    })
+    .catch(error => console.log('error', error));
+}
 
 function onload() {
   // Creo la tabla de productos con los datos guardados
-  if (JSON.parse(localStorage.getItem("productos"))) {
-    let localSavedProductos = JSON.parse(localStorage.getItem("productos"))
+  // if (JSON.parse(localStorage.getItem("productos"))) {
+  //   let localSavedProductos = JSON.parse(localStorage.getItem("productos"))
 
-    for (const producto of localSavedProductos) {
-      productos.push(producto);
-    }
-    createTable()
-  }
+  //   for (const producto of localSavedProductos) {
+  //     productos.push(producto);
+  //   }
+  //   createTable()
+  // }
   // Asigno los sectores creados en el archivo sector.js al select de ID "Sectores"
   if (JSON.parse(localStorage.getItem("sectores"))) {
     let localSavedSectores = JSON.parse(localStorage.getItem("sectores"))
@@ -83,6 +94,7 @@ function onload() {
     }
   }
 }
+
 function Producto(id, author, titulo, cantidad, rubro, date) {
   this.id = id;
   this.author = author;
@@ -148,7 +160,7 @@ editar = (id, productos) => {
         obj.id = parseInt(document.getElementById("editID").value);
         obj.author = document.getElementById("editAuthor").value;
         obj.titulo = document.getElementById("editTitle").value
-        obj.cantidad = document.getElementById("editCantidad").value
+        obj.cantidad = parseInt(document.getElementById("editCantidad").value)
         obj.rubro = document.getElementById("editRubro").value
         obj.date = new Date().toLocaleDateString()
         timeline.push({ id: obj.id, date: obj.date, author: obj.author, cantidad: obj.cantidad, titulo: obj.titulo, rubro: obj.rubro, modificacion: "Edición" })

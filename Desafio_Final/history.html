@@ -68,15 +68,28 @@
                             class="mt-3 mx-0" width="200" alt="Home"></a>
                     <br><br>
                     <h1>Historial de movimientos</h1>
-                    <br><br>
-                    <div class="container-fluid py-5 container horizontal-scrollable">
-                        <div class="col-lg-12 row">
-                            <div class="horizontal-timeline">
-                                <ul class="list-inline items" id="timeline">
-
-                                </ul>
+                    <div class="container-fluid py-5 horizontal-scrollable" >
+                        <div class="col-12 row">
+                            <div class="horizontal-timeline my-5" >
+                                <ul class="list-inline items"  id="timeline"></ul>
                             </div>
                         </div>
+                    </div>
+                    <div class="vertical-scrollable">
+                        <table class="table">
+                            <thead class="table-dark sticky-top">
+                                <tr style="border-style: solid">
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Autor</th>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Accion</th>
+                                </tr>
+                            </thead>
+                            <div class="vertical-scrollable">
+                                <tbody id="table"></tbody>
+                            </div>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -86,10 +99,6 @@
 </html>
 
 <style>
-    .horizontal-timeline .items {
-        border-top: 3px solid #e9ecef;
-    }
-
     .horizontal-timeline .items .items-list {
         display: block;
         position: relative;
@@ -101,7 +110,7 @@
     .horizontal-timeline .items .items-list:before {
         content: "";
         position: absolute;
-        height: 36px;
+        height: 70px;
         border-right: 2px dashed #dee2e6;
         top: 0;
     }
@@ -121,11 +130,15 @@
         .horizontal-timeline .items .items-list {
             display: inline-block;
             width: 24%;
-            padding-top: 45px;
+            padding-top: 60px;
         }
 
         .horizontal-timeline .items .items-list .event-date {
-            top: -40px;
+            top: -28px;
+            left: 2px;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
         }
     }
 
@@ -133,9 +146,28 @@
         overflow-x: auto;
         white-space: nowrap;
     }
-
-    .horizontal-scrollable>.row>.col-xs-4 {
-        display: inline-block;
-        float: none;
+    .vertical-scrollable {
+        max-height: 16rem;
+        white-space: nowrap;
+        overflow-y: auto;
     }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, .5);
+    }
+
+    ::-webkit-scrollbar {
+    width: 5px;
+    height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+    }
+
 </style>
