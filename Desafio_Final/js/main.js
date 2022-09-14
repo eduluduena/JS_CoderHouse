@@ -1,5 +1,4 @@
 const productos = [];
-const db = []
 const sectores = [];
 let timeline = JSON.parse(localStorage.getItem("timeline"))
 
@@ -39,10 +38,11 @@ function llamada(token) {
     .then(result => {
       resultado = JSON.parse(result);
       for (const i of resultado.Items) {
+        let nombreMinusc = i.Nombre.toLowerCase()
         productos.push({
-            id: i.Codigo,
+            id: i.Codigo.toUpperCase(),
             rubro: i.IdRubro,
-            titulo: i.Nombre,
+            titulo: nombreMinusc[0].toUpperCase() + nombreMinusc.substring(1),
             precio: i.Precio,
             cantidad: i.Stock,
         });
@@ -107,7 +107,7 @@ function Producto(id, author, titulo, cantidad, rubro, date) {
 setCreate = () => {
   productos.push(
     new Producto(
-      parseInt(document.getElementById("codigo").value),
+      document.getElementById("codigo").value.toUpperCase(),
       document.getElementById("author").value,
       document.getElementById("titulo").value,
       parseInt(document.getElementById("cantidad").value),
@@ -117,7 +117,7 @@ setCreate = () => {
   );
   timeline.push(
     {
-      id: parseInt(document.getElementById("codigo").value),
+      id: document.getElementById("codigo").value.toUpperCase(),
       date: new  Date().toLocaleDateString(),
       author: document.getElementById("author").value,
       cantidad: parseInt(document.getElementById("cantidad").value),
@@ -192,11 +192,11 @@ createTable = () => {
   for (const producto of productos) {
     tabla.innerHTML += `
         <tr id="tr${producto.id}">
-            <th scope="row" id="${producto.id}">${producto.id}</th>
-            <td id="titulo${producto.id}">${producto.titulo}</td>
-            <td id="rubro${producto.id}">${producto.rubro}</td>
-            <td id="cantidad${producto.id}" value="${producto.cantidad}">${producto.cantidad}</td>
-            <td id="acciones${producto.id}">
+            <th scope="row" class="col-1" id="${producto.id}">${producto.id}</th>
+            <td class="col-6" id="titulo${producto.id}" >${producto.titulo}</td>
+            <td class="col-1" id="rubro${producto.id}">${producto.rubro}</td>
+            <td class="col-1" id="cantidad${producto.id}" value="${producto.cantidad}">${producto.cantidad}</td>
+            <td class="col-2" id="acciones${producto.id}">
                 <button type='button' onclick='agregar(document.getElementById("${producto.id}").id, productos)' class='btn btn-outline-success' data-bs-toggle='modal' data-bs-target='#addModal' >
                     <span class='bi-plus'></span>
                 </button> 
