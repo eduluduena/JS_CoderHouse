@@ -92,34 +92,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal" id="addModal">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Agregar Stock</h4>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="mb-3">
-                                            <label for="addCantidad" class="form-label">Cantidad</label>
-                                            <input type="number" class="form-control" required id="addCantidad"
-                                                aria-describedby="AddCantidad" />
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
-                                        Cerrar
-                                    </button>
-                                    <button type="submit" data-bs-dismiss="modal" id="btn-add-save"
-                                        class="btn btn-outline-success">
-                                        Guardar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="modal" id="editModal">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -129,26 +101,26 @@
                                 </div>
                                 <div class="modal-body">
                                     <form class="row">
-                                        <div class="mb-3 col-2">
-                                            <label for="addCantidad" class="form-label"># ID</label>
+                                        <div class="mb-3">
+                                            <label for="editID" class="form-label"># ID</label>
                                             <input type="number" id="editID" class="form-control" required
-                                                aria-describedby="AddCantidad" />
+                                                aria-describedby="editID" />
                                         </div>
-                                        <div class="mb-3 col-10">
-                                            <label for="addCantidad" class="form-label">Sector</label>
+                                        <div class="mb-3">
+                                            <label for="editTitle" class="form-label">Sector</label>
                                             <input type="text" id="editTitle" class="form-control" required
-                                                aria-describedby="AddCantidad" />
+                                                aria-describedby="editTitle" />
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
+                                                Cerrar
+                                            </button>
+                                            <button type="submit" id="btn-edit-save"
+                                                class="btn btn-outline-success">
+                                                Guardar
+                                            </button>
                                         </div>
                                     </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
-                                        Cerrar
-                                    </button>
-                                    <button type="submit" data-bs-dismiss="modal" id="btn-edit-save"
-                                        class="btn btn-outline-success">
-                                        Guardar
-                                    </button>
                                 </div>
                             </div>
                         </div>

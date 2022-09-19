@@ -67,7 +67,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form class="row">
                                         <div class="mb-3">
                                             <label for="Empleado" class="form-label">Nombre del Empleado</label>
                                             <input type="text" class="form-control" required id="author"
@@ -90,19 +90,18 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="rubro" class="form-label">Rubro</label>
-                                            <select required class="form-select" id="rubro">
+                                            <select class="form-select" id="rubro">
                                             </select>
                                         </div>
+                                        <div class="col-12">
+                                            <button type="button" class="btn btn-outline-danger"
+                                                data-bs-dismiss="modal">
+                                                Cerrar
+                                            </button>
+                                            <button class="btn btn-outline-primary" onclick="setCreate()"
+                                                type="submit">Guardar</button>
+                                        </div>
                                     </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
-                                        Cerrar
-                                    </button>
-                                    <button type="submit" onclick="setCreate()" data-bs-dismiss="modal"
-                                        class="btn btn-outline-primary">
-                                        Guardar
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -115,22 +114,21 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form class="row">
                                         <div class="mb-3">
                                             <label for="addCantidad" class="form-label">Cantidad</label>
                                             <input type="number" class="form-control" required id="addCantidad"
                                                 aria-describedby="AddCantidad" />
                                         </div>
+                                        <div class="col-12">
+                                            <button type="button" class="btn btn-outline-danger"
+                                                data-bs-dismiss="modal">
+                                                Cerrar
+                                            </button>
+                                            <button class="btn btn-outline-primary" onclick="validar()" id="btn-add-save" 
+                                                type="submit">Guardar</button>
+                                        </div>
                                     </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
-                                        Cerrar
-                                    </button>
-                                    <button type="submit" data-bs-dismiss="modal" id="btn-add-save"
-                                        class="btn btn-outline-success">
-                                        Guardar
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +141,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form class="row">
                                         <div class="mb-3">
                                             <label for="addCantidad" class="form-label"># ID</label>
                                             <input type="text" id="editID" class="form-control" required
@@ -169,16 +167,15 @@
                                             <input type="number" id="editCantidad" class="form-control" required
                                                 aria-describedby="AddCantidad" />
                                         </div>
+                                        <div class="col-12">
+                                            <button type="button" class="btn btn-outline-danger"
+                                                data-bs-dismiss="modal">
+                                                Cerrar
+                                            </button>
+                                            <button class="btn btn-outline-primary" id="btn-edit-save" onclick="validar()"
+                                                type="submit">Guardar</button>
+                                        </div>
                                     </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">
-                                        Cerrar
-                                    </button>
-                                    <button type="submit" data-bs-dismiss="modal" id="btn-edit-save"
-                                        class="btn btn-outline-success">
-                                        Guardar
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -195,13 +192,13 @@
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
-                                <tbody id="table"></tbody>
+                            <tbody id="table"></tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
-
 </body>
 
 </html>
@@ -221,16 +218,15 @@
     }
 
     ::-webkit-scrollbar {
-    width: 5px;
-    height: 6px;
+        width: 5px;
+        height: 6px;
     }
 
     ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+        background: #f1f1f1;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+        background: #555;
     }
-
 </style>

@@ -1,4 +1,4 @@
-const productos = [];
+let productos = [];
 const sectores = [];
 let timeline = JSON.parse(localStorage.getItem("timeline"))
 
@@ -6,65 +6,72 @@ if (timeline == null) {
   timeline = []
 }
 
-var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+// !!!IMPORTANTE!!!
+// Deje de usar la API del sistema contable para no modificar el stock del sistema de la empresa.
+// Por el momento copie lo que obtube y lo guarde en un archivo json
+// !!!IMPORTANTE!!!
 
-var urlencoded = new URLSearchParams();
-urlencoded.append("grant_type", "client_credentials");
-urlencoded.append("client_id", "arbrasfabrica@gmail.com");
-urlencoded.append("client_secret", "0fe26dae5d434a7182a7c8ea21c9cc60");
+// EL CODIGO PARA ACCEDER A LA API DEL SISTEMA ES EL SIGUIENTE 
 
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: urlencoded,
-  redirect: 'follow'
-};
+// var myHeaders = new Headers();
+// myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-fetch("https://rest.contabilium.com/token", requestOptions)
+// var urlencoded = new URLSearchParams();
+// urlencoded.append("grant_type", "client_credentials");
+// urlencoded.append("client_id", "arbrasfabrica@gmail.com");
+// urlencoded.append("client_secret", "0fe26dae5d434a7182a7c8ea21c9cc60");
+
+// var requestOptions = {
+//   method: 'POST',
+//   headers: myHeaders,
+//   body: urlencoded,
+//   redirect: 'follow'
+// };
+
+// fetch("https://rest.contabilium.com/token", requestOptions)
+//   .then(response => response.text())
+//   .then(result => {
+//     llamada(JSON.parse(result))
+//   })
+//   .catch(error => console.log('error', error));
+  
+// function llamada(token) {
+//   fetch("https://rest.contabilium.com/api/conceptos/search?pageSize=0",{
+//     headers: {
+//       Authorization: "Bearer " + token.access_token
+//     }
+//   })
+//     .then(response => response.text())
+//     .then(result => {
+//       resultado = JSON.parse(result);
+//       for (const i of resultado.Items) {
+//         let nombreMinusc = i.Nombre.toLowerCase()
+//         productos.push({
+//             id: i.Codigo.toUpperCase(),
+//             rubro: i.IdRubro,
+//             titulo: nombreMinusc[0].toUpperCase() + nombreMinusc.substring(1),
+//             cantidad: parseInt(i.Precio),
+//         });
+//       }
+//       console.log(productos)
+//     createTable()
+
+//     })
+//     .catch(error => console.log('error', error));
+// }
+if (localStorage.getItem("productos") == "[]") {
+  fetch("productos.json")
   .then(response => response.text())
   .then(result => {
-    llamada(JSON.parse(result))
-  })
-  .catch(error => console.log('error', error));
-  
-function llamada(token) {
-  fetch("https://rest.contabilium.com/api/conceptos/search?pageSize=0",{
-    headers: {
-      Authorization: "Bearer " + token.access_token
-    }
-  })
-    .then(response => response.text())
-    .then(result => {
-      resultado = JSON.parse(result);
-      for (const i of resultado.Items) {
-        let nombreMinusc = i.Nombre.toLowerCase()
-        productos.push({
-            id: i.Codigo.toUpperCase(),
-            rubro: i.IdRubro,
-            titulo: nombreMinusc[0].toUpperCase() + nombreMinusc.substring(1),
-            precio: i.Precio,
-            cantidad: i.Stock,
-        });
+    resultado = JSON.parse(result);
+      for (const i of resultado) {
+        productos.push(i);
       }
-      console.log(productos)
-    createTable()
-
     })
-    .catch(error => console.log('error', error));
+  .catch(error => console.log('error', error));
 }
 
 function onload() {
-  // Creo la tabla de productos con los datos guardados
-  // if (JSON.parse(localStorage.getItem("productos"))) {
-  //   let localSavedProductos = JSON.parse(localStorage.getItem("productos"))
-
-  //   for (const producto of localSavedProductos) {
-  //     productos.push(producto);
-  //   }
-  //   createTable()
-  // }
-  // Asigno los sectores creados en el archivo sector.js al select de ID "Sectores"
   if (JSON.parse(localStorage.getItem("sectores"))) {
     let localSavedSectores = JSON.parse(localStorage.getItem("sectores"))
 
@@ -93,6 +100,16 @@ function onload() {
       timeline.push(modificacion);
     }
   }
+
+  if (JSON.parse(localStorage.getItem("productos"))) {
+    let localSavedProductos = JSON.parse(localStorage.getItem("productos"))
+
+    for (const producto of localSavedProductos) {
+      productos.push(producto);
+    }
+  } 
+  
+  createTable()
 }
 
 function Producto(id, author, titulo, cantidad, rubro, date) {
@@ -135,19 +152,20 @@ setCreate = () => {
 agregar = (id, productos) => {
   document.getElementById("btn-add-save").onclick = () => {
     productos.findIndex((obj) => {
-      if (obj.id === parseInt(id)) {
-        obj.cantidad += parseInt(document.getElementById("addCantidad").value);
-        timeline.push({ id: obj.id, date: new Date().toLocaleDateString(), author: obj.author, cantidad: obj.cantidad, titulo: obj.titulo, rubro: obj.rubro, modificacion: "Agrego stock" })
+      if (obj.id === id) {
+        if (!(document.getElementById("addCantidad").value == "")){
+          obj.cantidad += parseInt(document.getElementById("addCantidad").value)
+          timeline.push({ id: obj.id, date: new Date().toLocaleDateString(), author: obj.author, cantidad: obj.cantidad, titulo: obj.titulo, rubro: obj.rubro, modificacion: "Agrego stock" })
+        }
       }
     });
-    parseInt((document.getElementById("addCantidad").value = 0));
     createTable();
-    toastify(true, "Se agrego el stock del producto correctamente")
+    toastify(false, "Complete la cantidad a agregar")
   };
 };
 
 editar = (id, productos) => {
-  const indexOfObject = productos.findIndex(producto => producto.id === parseInt(id));
+  const indexOfObject = productos.findIndex(producto => producto.id === id);
   document.getElementById("editID").value = productos[indexOfObject].id
   document.getElementById("editAuthor").value = productos[indexOfObject].author
   document.getElementById("editTitle").value = productos[indexOfObject].titulo
@@ -156,8 +174,8 @@ editar = (id, productos) => {
 
   document.getElementById("btn-edit-save").onclick = () => {
     productos.findIndex((obj) => {
-      if (obj.id === parseInt(id)) {
-        obj.id = parseInt(document.getElementById("editID").value);
+      if (obj.id === id) {
+        obj.id = document.getElementById("editID").value;
         obj.author = document.getElementById("editAuthor").value;
         obj.titulo = document.getElementById("editTitle").value
         obj.cantidad = parseInt(document.getElementById("editCantidad").value)
@@ -174,8 +192,8 @@ editar = (id, productos) => {
 
 eliminar = (id, productos) => {
   const indexOfObject = productos.findIndex(obj => {
-    obj.id === parseInt(id)
-    if (obj.id === parseInt(id)) {
+    obj.id === id
+    if (obj.id === id) {
       timeline.push({ id: obj.id, date: new Date().toLocaleDateString(), author: obj.author, cantidad: obj.cantidad, titulo: obj.titulo, rubro: obj.rubro, modificacion: "Eliminado" })
     }
   });
@@ -184,6 +202,7 @@ eliminar = (id, productos) => {
   toastify(false, "Se elimino el producto correctamente")
 };
 
+
 createTable = () => {
   localStorage.setItem("productos", JSON.stringify(productos));
   localStorage.setItem("timeline", JSON.stringify(timeline));
@@ -191,24 +210,24 @@ createTable = () => {
   tabla.innerHTML = "";
   for (const producto of productos) {
     tabla.innerHTML += `
-        <tr id="tr${producto.id}">
-            <th scope="row" class="col-1" id="${producto.id}">${producto.id}</th>
-            <td class="col-6" id="titulo${producto.id}" >${producto.titulo}</td>
-            <td class="col-1" id="rubro${producto.id}">${producto.rubro}</td>
-            <td class="col-1" id="cantidad${producto.id}" value="${producto.cantidad}">${producto.cantidad}</td>
-            <td class="col-2" id="acciones${producto.id}">
-                <button type='button' onclick='agregar(document.getElementById("${producto.id}").id, productos)' class='btn btn-outline-success' data-bs-toggle='modal' data-bs-target='#addModal' >
-                    <span class='bi-plus'></span>
-                </button> 
-                <button type='button' class='btn btn-outline-primary' onclick='editar(document.getElementById("${producto.id}").id, productos)' data-bs-toggle='modal' data-bs-target='#editModal'>
-                    <span class='bi-pencil'></span>
-                </button> 
-                <button type='button' onclick='eliminar(document.getElementById("${producto.id}").id, productos)' class='btn btn-outline-danger'>
-                    <span class='bi-trash'></span>
-                </button>
-            </td>
-        </tr>
-        `;
+      <tr id="tr${producto.id}">
+          <th scope="row" class="col-1" id="${producto.id}">${producto.id}</th>
+          <td class="col-6" id="titulo${producto.id}" >${producto.titulo}</td>
+          <td class="col-1" id="rubro${producto.id}">${producto.rubro}</td>
+          <td class="col-1" id="cantidad${producto.id}" value="${producto.cantidad}">${producto.cantidad}</td>
+          <td class="col-2" id="acciones${producto.id}">
+              <button type='button' onclick='agregar(document.getElementById("${producto.id}").id, productos)' class='btn btn-outline-success' data-bs-toggle='modal' data-bs-target='#addModal' >
+                  <span class='bi-plus'></span>
+              </button> 
+              <button type='button' class='btn btn-outline-primary' onclick='editar(document.getElementById("${producto.id}").id, productos)' data-bs-toggle='modal' data-bs-target='#editModal'>
+                  <span class='bi-pencil'></span>
+              </button> 
+              <button type='button' onclick='eliminar(document.getElementById("${producto.id}").id, productos)' class='btn btn-outline-danger'>
+                  <span class='bi-trash'></span>
+              </button>
+          </td>
+      </tr>
+      `;
   }
 };
 
@@ -221,4 +240,22 @@ toastify = (condition, text) => {
       background: "linear-gradient(to right," + gradiente + ")",
     }
   }).showToast();
+}
+
+function validar() {
+  var empleado = document.getElementById("author").value
+  var titulo = document.getElementById("titulo").value
+  var codigo = document.getElementById("codigo").value
+  var cantidad = document.getElementById("cantidad").value
+  var rubro = document.getElementById("rubro").value
+  var addCantidad = document.getElementById("addCantidad").value
+  var editID = document.getElementById("editID").value
+  var editAuthor = document.getElementById("editAuthor").value
+  var editTitle = document.getElementById("editTitle").value
+  var editRubro = document.getElementById("editRubro").value
+  var editCantidad = document.getElementById("editCantidad").value
+
+if (empleado == "" || titulo == "" || codigo == "" || cantidad == "" || rubro == "" || addCantidad == "" || editID == "" || editTitle == "" || editRubro == "" || editCantidad || editAuthor == ""){
+  toastify(false, "Debes llenar todos los campos")
+} 
 }

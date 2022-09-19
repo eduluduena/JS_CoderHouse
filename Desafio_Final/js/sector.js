@@ -1,16 +1,24 @@
-const sectores = [];
+let sectores = JSON.parse(localStorage.getItem("sectores"))
+if (sectores == null) {
+  sectores = []
+}
+
+if (localStorage.getItem("sectores") == null) {
+  fetch("sectores.json")
+  .then(response => response.text())
+  .then(result => {
+    resultado = JSON.parse(result);
+    localStorage.setItem("sectores", JSON.stringify(resultado));
+  })
+  .catch(error => console.log('error', error));
+}
 
 window.onload = () => {
-  if (JSON.parse(localStorage.getItem("sectores"))) {
-  let localSaved = JSON.parse(localStorage.getItem("sectores"))
-  for (const sector of localSaved) {
-    sectores.push(sector);
-  }
-  createTable()
-}
+  console.log(sectores)
+    createTable()
 }
 
-function Sector(id, titulo, cantidad, rubro) {
+function Sector(id, titulo) {
   this.id = id;
   this.titulo = titulo;
 }
@@ -22,6 +30,7 @@ setCreate = () => {
       document.getElementById("titulo").value
     )
   );
+  localStorage.setItem("sectores", JSON.stringify(sectores));
   let tabla = document.querySelector("#table");
   tabla.innerHTML = ""
   createTable()
@@ -45,19 +54,17 @@ editar = (id, sectores) => {
   const indexOfObject = sectores.findIndex(sector => sector.id === parseInt(id));
   document.getElementById("editID").value = sectores[indexOfObject].id
   document.getElementById("editTitle").value = sectores[indexOfObject].titulo
-  document.getElementById("editRubro").value = sectores[indexOfObject].rubro
-  document.getElementById("editCantidad").value = sectores[indexOfObject].cantidad
 
   document.getElementById("btn-edit-save").onclick = () => {
+    debugger
     sectores.findIndex((obj) => {
       if (obj.id === parseInt(id)) {
+        console.log(parseInt(document.getElementById("editID").value))
         obj.id = parseInt(document.getElementById("editID").value);
         obj.titulo = document.getElementById("editTitle").value
-        obj.cantidad = document.getElementById("editCantidad").value
-        obj.rubro = document.getElementById("editRubro").value
       }
     });
-    parseInt((document.getElementById("addCantidad").value = 0));
+    localStorage.setItem("sectores", JSON.stringify(sectores));
     createTable();
     toastify(true, "Se edito el sector correctamente")
   }
@@ -66,12 +73,12 @@ editar = (id, sectores) => {
 eliminar = (id, sectores) => {
   const indexOfObject = sectores.findIndex(sector => sector.id === parseInt(id));
   sectores.splice(indexOfObject, 1);
+  localStorage.setItem("sectores", JSON.stringify(sectores));
   createTable();
   toastify(false, "Se elimino el sector correctamente")
 };
 
 createTable = () => {
-  localStorage.setItem("sectores", JSON.stringify(sectores));
   let tabla = document.querySelector("#table");
   tabla.innerHTML = "";
   for (const sector of sectores) {

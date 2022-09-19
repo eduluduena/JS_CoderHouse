@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "titulo": "Plegado"
+    },
+    {
+        "id": 2,
+        "titulo": "Tercerizado"
+    },
+    {
+        "id": 3,
+        "titulo": "Guillotina"
+    },
+    {
+        "id": 4,
+        "titulo": "Armado"
+    },
+    {
+        "id": 5,
+        "titulo": "Conformado"
+    }
+]

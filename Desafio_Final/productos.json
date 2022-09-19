@@ -1,83 +1,254 @@
 [
     {
-        "id": 213,
-        "date": "1/9/2022",
-        "author": "sad",
-        "cantidad": 123,
-        "titulo": "asd",
-        "rubro": "Pintura",
-        "modificacion": "Agrego un producto"
+        "id": "ACOPLP",
+        "rubro": "Plegado",
+        "titulo": "Acople puntal linea pesada",
+        "cantidad": 460
     },
     {
-        "id": 213,
-        "date": "1/9/2022",
-        "author": "sad",
-        "cantidad": 336,
-        "titulo": "asd",
-        "rubro": "Pintura",
-        "modificacion": "Agrego stock"
+        "id": "ACOPP",
+        "rubro": "Plegado",
+        "titulo": "Acople puntal picking",
+        "cantidad": 388
     },
     {
-        "id": 213,
-        "date": "1/9/2022",
-        "author": "sad",
-        "cantidad": "336",
-        "titulo": "fdfddfe",
-        "rubro": "Pintura",
-        "modificacion": "Edición"
+        "id": "APE450",
+        "rubro": "Plegado",
+        "titulo": "Apoyo espejo",
+        "cantidad": 2112
     },
     {
-        "id": 213,
-        "date": "1/9/2022",
-        "author": "sad",
-        "cantidad": "336",
-        "titulo": "fdfddfe",
-        "rubro": "Pintura",
-        "modificacion": "Eliminado"
+        "id": "AMPCC070",
+        "rubro": "Tercerizado",
+        "titulo": "Archivo de 4 cajones de \r\nmedidas: 1.34x0.46x0.70 \r\ncon guias telescopicas \r\na bolilla",
+        "cantidad": 72438
     },
     {
-        "id": 123,
-        "date": "1/9/2022",
-        "author": "asd",
-        "cantidad": 21,
-        "titulo": "213",
-        "rubro": "Pintura",
-        "modificacion": "Agrego un producto"
+        "id": "AMPCC040",
+        "rubro": "Armado",
+        "titulo": "Archivo metalico \r\npara carpetas \r\ncolgantes archivo de 4 cajones eco \r\nmedidas: 1.34x0.46x0.40 con \r\nguias telescopicas a bolilla",
+        "cantidad": 56290
     },
     {
-        "id": 123,
-        "date": "1/9/2022",
-        "author": "asd",
-        "cantidad": 3253,
-        "titulo": "213",
-        "rubro": "Pintura",
-        "modificacion": "Agrego stock"
+        "id": "AE2PB",
+        "rubro": "Armado",
+        "titulo": "Armario eco de\r\n2 puertas batientes 1 estante fijo 1,70x0,80x0,40",
+        "cantidad": 53288
     },
     {
-        "id": 123,
-        "date": "1/9/2022",
-        "author": "asd",
-        "cantidad": 3255,
-        "titulo": "213",
-        "rubro": "Pintura",
-        "modificacion": "Agrego stock"
+        "id": "APB1P",
+        "rubro": "Armado",
+        "titulo": "Armario puerta\r\nbatiente de \r\n1 puerta 3 estantes 1.80x0.50x0.40 ref.",
+        "cantidad": 51904
     },
     {
-        "id": 123,
-        "date": "1/9/2022",
-        "author": "3",
-        "cantidad": "3255",
-        "titulo": "213",
-        "rubro": "Pintura",
-        "modificacion": "Edición"
+        "id": "APB2P",
+        "rubro": "Armado",
+        "titulo": "Armario puertas \r\nbatiente de \r\n2 puertas 3 estantes 1.80x0.90x0.45 ref",
+        "cantidad": 61642
     },
     {
-        "id": 1,
-        "date": "1/9/2022",
-        "author": "Eduardo",
-        "cantidad": 30,
-        "titulo": "Bandeja 43x90 #22",
-        "rubro": "Pintura",
-        "modificacion": "Agrego un producto"
+        "id": "CAN27",
+        "rubro": "Tercerizado",
+        "titulo": "Bandeja carnicera",
+        "cantidad": 718
+    },
+    {
+        "id": "CAN29",
+        "rubro": "Tercerizado",
+        "titulo": "Bandeja filetera chica",
+        "cantidad": 874
+    },
+    {
+        "id": "CAN28",
+        "rubro": "Tercerizado",
+        "titulo": "Bandeja filetera grande",
+        "cantidad": 1613
+    },
+    {
+        "id": "BAN266028",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 26x60 #28",
+        "cantidad": 482
+    },
+    {
+        "id": "BAN268028",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 26x80 #28r",
+        "cantidad": 784
+    },
+    {
+        "id": "BAN307026",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 30x70 #26r",
+        "cantidad": 794
+    },
+    {
+        "id": "BAN309018",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 30x90 #18r",
+        "cantidad": 2434
+    },
+    {
+        "id": "BAN309020",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 30x90 #20r",
+        "cantidad": 1790
+    },
+    {
+        "id": "BAN309022",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 30x90 #22r",
+        "cantidad": 1418
+    },
+    {
+        "id": "BAN309024",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 30x90 #24r",
+        "cantidad": 1134
+    },
+    {
+        "id": "BAN309026",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 30x90 #26r",
+        "cantidad": 961
+    },
+    {
+        "id": "BAN309028",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 30x90 #28r",
+        "cantidad": 840
+    },
+    {
+        "id": "BAN309022M",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 30x90 matrizada #22m",
+        "cantidad": 1342
+    },
+    {
+        "id": "BAN437026",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 43x70 #26r",
+        "cantidad": 1009
+    },
+    {
+        "id": "BAN439018",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 43x90 #18r",
+        "cantidad": 3060
+    },
+    {
+        "id": "BAN439020",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 43x90 #20r",
+        "cantidad": 2266
+    },
+    {
+        "id": "BAN439022",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 43x90 #22r",
+        "cantidad": 1767
+    },
+    {
+        "id": "BAN439024",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 43x90 #24r",
+        "cantidad": 1426
+    },
+    {
+        "id": "BAN439026",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 43x90 #26r",
+        "cantidad": 1232
+    },
+    {
+        "id": "BAN439022M",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 43x90 matrizada #22m",
+        "cantidad": 1691
+    },
+    {
+        "id": "BAN609018",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 60x90 #18r",
+        "cantidad": 3939
+    },
+    {
+        "id": "BAN609020",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 60x90 #20r",
+        "cantidad": 3094
+    },
+    {
+        "id": "BAN609022",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 60x90 #22r",
+        "cantidad": 2348
+    },
+    {
+        "id": "BAN609024",
+        "rubro": "Guillotina",
+        "titulo": "Bandeja gris 60x90 #24r",
+        "cantidad": 1968
+    },
+    {
+        "id": "CAN48",
+        "rubro": "Tercerizado",
+        "titulo": "Bandeja maduracion de sardo mat. virgen",
+        "cantidad": 7540
+    },
+    {
+        "id": "CAN43",
+        "rubro": "Tercerizado",
+        "titulo": "Bandeja para maduracion de quesos",
+        "cantidad": 7540
+    },
+    {
+        "id": "CAN44",
+        "rubro": "Tercerizado",
+        "titulo": "Bandeja para maduracion de quesos mat. rec.",
+        "cantidad": 5655
+    },
+    {
+        "id": "CAN23",
+        "rubro": "Tercerizado",
+        "titulo": "Bandeja para quesos alta",
+        "cantidad": 1753
+    },
+    {
+        "id": "CAN24",
+        "rubro": "Tercerizado",
+        "titulo": "Bandeja para quesos baja",
+        "cantidad": 1571
+    },
+    {
+        "id": "BPB600",
+        "rubro": "Conformado",
+        "titulo": "Barral porta blistero x1160",
+        "cantidad": 1332
+    },
+    {
+        "id": "BPB701",
+        "rubro": "Conformado",
+        "titulo": "Barral porta blistero x770",
+        "cantidad": 1127
+    },
+    {
+        "id": "BPB601",
+        "rubro": "Conformado",
+        "titulo": "Barral porta blistero x870",
+        "cantidad": 1067
+    },
+    {
+        "id": "BASLP2010",
+        "rubro": "Plegado",
+        "titulo": "Bastidor linea pesada 2000x1000",
+        "cantidad": 15399
+    },
+    {
+        "id": "BASLP2060",
+        "rubro": "Plegado",
+        "titulo": "Bastidor linea pesada 2000x600",
+        "cantidad": 14329
     }
 ]
